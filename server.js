@@ -74,4 +74,13 @@ const server = http.createServer(async (req, res) => {
   });
 });
 
+server.on('error', error => {
+  if (error.code === 'EADDRINUSE') {
+    console.error(`端口 ${PORT} 已被占用，请关闭旧的 Node 服务后重试。`);
+  } else {
+    console.error(error);
+  }
+  process.exitCode = 1;
+});
+
 server.listen(PORT, () => console.log(`Moyu running at http://localhost:${PORT}/index.html`));
