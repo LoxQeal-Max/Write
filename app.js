@@ -50,6 +50,10 @@ function showFile(name, text) {
   }
 }
 
+function shouldCreateFile(text) {
+  return /大纲|文件|导出|保存为|生成.*(?:md|markdown|txt|docx|pdf)|整理成|章节文档|人物卡|世界观设定/.test(text);
+}
+
 async function sendMessage(text) {
   if (!text.trim()) return;
   addMessage(text, 'user');
@@ -93,7 +97,9 @@ async function sendMessage(text) {
     const answer = data.choices?.[0]?.message?.content || '模型没有返回内容。';
     history.push({ role: 'assistant', content: answer });
     addMessage(answer);
-    showFile('ai-output', answer);
+    if (shouldCreateFile(text)) {
+      showFile('ai-output', answer);
+    }
   } catch (error) {
     loading.remove();
     addMessage(`连接失败：${error.message}`);
