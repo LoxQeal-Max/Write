@@ -6,6 +6,22 @@ let project = localStorage.getItem('moyu-project') || '雨夜的第七封信';
 let folderHandle = null;
 let history = [];
 
+function selectProject(name, element) {
+  project = name;
+  localStorage.setItem('moyu-project', name);
+  $('#projectTitle').textContent = name;
+  $$('.task').forEach(task => task.classList.remove('active'));
+  if (element) element.classList.add('active');
+  history = [];
+  $('#messages').querySelectorAll('.msg').forEach(message => message.remove());
+  addMessage(`已切换到项目「${name}」。`);
+}
+
+$$('.task').forEach(task => {
+  task.style.cursor = 'pointer';
+  task.onclick = () => selectProject(task.textContent.trim(), task);
+});
+
 const config = () => JSON.parse(localStorage.getItem('moyu-api') || '{}');
 
 function openModal(html) {
@@ -181,6 +197,12 @@ $('#newProject').onclick = async () => {
   project = name;
   localStorage.setItem('moyu-project', name);
   $('#projectTitle').textContent = name;
+  const task = document.createElement('div');
+  task.className = 'task active';
+  task.innerHTML = '<span class="dot"></span>' + name;
+  task.style.cursor = 'pointer';
+  task.onclick = () => selectProject(name, task);
+  $('.label').insertAdjacentElement('afterend', task);
   if (!window.showDirectoryPicker) return;
   try {
     folderHandle = await showDirectoryPicker({ mode: 'readwrite' });

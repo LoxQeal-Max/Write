@@ -13,7 +13,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:13px/1.6 system-ui,"Mi
 .nav button{text-align:left;background:none;border:0;padding:9px 10px;border-radius:7px;color:#5c6672}
 .nav button:hover,.nav .on{background:#eaf1ff;color:var(--blue)}
 .label{font-size:10px;color:#a0a7b0;margin:21px 10px 7px}
-.task{padding:8px 10px;color:#68717b;font-size:12px}
+.task{padding:8px 10px;color:#68717b;font-size:12px;border-radius:7px;transition:background .15s,color .15s}.task:hover,.task.active{background:#eaf1ff;color:var(--blue)}
 .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#8eb5ff;margin-right:8px}
 .left-foot{margin-top:auto;border-top:1px solid var(--line);padding-top:13px;display:flex;align-items:center;gap:8px}
 .avatar{width:29px;height:29px;border-radius:50%;display:grid;place-items:center;background:#f1c9a3}
