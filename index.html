@@ -1,0 +1,112 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>墨屿 · 小说写作工作台</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+<aside class="left">
+<div class="logo">
+<i>墨</i>墨屿</div>
+<div class="tabs">
+<button class="on">AI 助手</button>
+<button>知识管理</button>
+</div>
+<nav class="nav">
+<button class="on">✎ 新建任务</button>
+<button>⌕ 搜索任务</button>
+<button>▣ 小说资料库</button>
+<button>◷ 定时任务</button>
+</nav>
+<div class="label">我的项目</div>
+<div class="task">
+<span class="dot">
+</span>雨夜的第七封信</div>
+<div class="task">
+<span class="dot">
+</span>未命名小说</div>
+<div class="left-foot">
+<div class="avatar">林</div>
+<div>
+<b>林默</b>
+<br>
+<small style="color:var(--muted)">个人工作区</small>
+</div>
+<button class="gear" id="settings">⚙</button>
+</div>
+</aside>
+<main class="main">
+<header class="top">
+<div class="crumb">项目 / <b id="projectTitle">雨夜的第七封信</b>
+</div>
+<div class="top-actions">
+<button class="small" id="theme">☼ 明亮</button>
+<button class="small" id="rightToggle">文件栏</button>
+<button class="primary" id="newProject">＋ 新建项目</button>
+</div>
+</header>
+<section class="conversation" id="messages">
+<div class="welcome">
+<h1>今天想写点什么？</h1>
+<p>人物、世界观和章节会被自动整理。</p>
+</div>
+<div class="msg ai">
+<div class="badge">墨</div>
+<div>
+<div class="bubble">你好，告诉我你的故事想法，我可以帮你搭建大纲、塑造人物，或直接开始写第一章。</div>
+<div class="tools">
+<button>复制</button>
+</div>
+</div>
+</div>
+</section>
+<section class="composer">
+<div class="quick">
+<button data-action="续写">✦ 续写</button>
+<button data-action="润色">Aa 润色</button>
+<button data-action="扩写">↗ 扩写</button>
+<button data-action="整理大纲">☷ 整理大纲</button>
+<button id="styleBtn">文风：自然叙事</button>
+<button id="kbBtn">小说资料</button>
+</div>
+<div class="box">
+<textarea id="prompt" placeholder="描述你想写的内容，或引用一个文件……">
+</textarea>
+<div class="foot">
+<div>
+<input type="file" id="file" hidden multiple>
+<button id="attach">＋ 添加文件</button>
+<span id="modelLabel">模型：未配置</span>
+</div>
+<button id="send">↑</button>
+</div>
+</div>
+</section>
+</main>
+<aside class="right" id="filePanel">
+<div class="right-head">
+<h2>文件与版本</h2>
+<button class="gear" id="closeFiles">×</button>
+</div>
+<div class="files" id="files">
+<div class="empty">AI 生成或修改的文件会显示在这里<br>支持预览、下载和版本对比</div>
+</div>
+</aside>
+</div>
+<div class="modal-bg" id="modal">
+<div class="modal" id="modalContent">
+</div>
+</div>
+<script src="app.js">
+</script>
+</body>
+</html>
+
+
+
+
+
+
